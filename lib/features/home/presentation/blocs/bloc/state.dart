@@ -13,8 +13,12 @@ class InitialState extends State {
   const InitialState(super.model);
 }
 
-class GenericSettingState extends State {
-  const GenericSettingState(super.model);
+class LoadingState extends State {
+  const LoadingState(super.model);
+}
+
+class LoadedState extends State {
+  const LoadedState(super.model);
 }
 
 class ErrorState extends State {

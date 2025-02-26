@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:konfio_app_dog/config/colors.dart';
 import 'package:konfio_app_dog/general_model/dog_model.dart';
-import 'package:konfio_app_dog/general_widgets/skeleton.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class CardDogWidget extends StatelessWidget {
   const CardDogWidget({
@@ -25,12 +25,14 @@ class CardDogWidget extends StatelessWidget {
               height: 200,
               child: CachedNetworkImage(
                 imageUrl: dog.image!,
-                placeholder: (context, url) => const Skeleton(
-                  height: 15,
-                  width: double.infinity,
+                placeholder: (context, url) => const Skeletonizer(
+                  child: SizedBox(
+                    height: 200,
+                    width: 130,
+                  ),
                 ),
                 errorWidget: (context, url, error) =>
-                    Image.asset('assets/home/dog3.jpeg'),
+                    Image.asset('assets/home/dog3.png'),
               ),
             ),
           ),

@@ -21,14 +21,12 @@ class Bloc extends bloc.Bloc<Event, State> {
 
   void _loadInitialEvent(LoadInitialEvent event, Emitter<State> emit) async {
     emit(
-      InitialState(
-        state.model,
-      ),
+      LoadingState(state.model),
     );
     try {
       final dogModel = await dogUseCase!.call();
       emit(
-        GenericSettingState(
+        LoadedState(
           state.model.copyWith(
             ltsDogModel: dogModel,
           ),
@@ -36,9 +34,7 @@ class Bloc extends bloc.Bloc<Event, State> {
       );
     } catch (e) {
       emit(
-        ErrorState(
-          state.model,
-        ),
+        ErrorState(state.model),
       );
     }
   }
