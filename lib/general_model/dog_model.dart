@@ -4,40 +4,40 @@ import 'package:equatable/equatable.dart';
 
 
 class DogModel  extends Equatable  {
-    final String? dogModelName;
+    final String? dogName;
     final String? description;
     final int? age;
     final String? image;
 
  const   DogModel({
-         this.dogModelName,
+         this.dogName,
          this.description,
          this.age,
          this.image,
     });
 
     DogModel copyWith({
-        String? dogModelName,
+        String? dogName,
         String? description,
         int? age,
         String? image,
     }) => 
         DogModel(
-            dogModelName: dogModelName ?? this.dogModelName,
+            dogName: dogName ?? this.dogName,
             description: description ?? this.description,
             age: age ?? this.age,
             image: image ?? this.image,
         );
 
     factory DogModel.fromJson(Map<String, dynamic> json) => DogModel(
-        dogModelName: json['dogModelName'],
+        dogName: json['dogName'],
         description: json['description'],
         age: json['age'],
         image: json['image'],
     );
 
     Map<String, dynamic> toJson() => {
-        'dogModelName': dogModelName,
+        'dogName': dogName,
         'description': description,
         'age': age,
         'image': image,
@@ -46,7 +46,7 @@ class DogModel  extends Equatable  {
       @override
       
       List<Object?> get props =>  [
-        dogModelName,
+        dogName,
         description,
         age,
         image,

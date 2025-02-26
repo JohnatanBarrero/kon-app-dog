@@ -25,8 +25,8 @@ class NavigationApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      Modular.get<HttpManager>().init();
- 
+    Modular.get<HttpManager>().init();
+
     return MaterialApp.router(
       routeInformationParser: Modular.routeInformationParser,
       routerDelegate: Modular.routerDelegate,
@@ -42,7 +42,7 @@ class NavigationApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         fontFamily: GoogleFonts.roboto().fontFamily,
-        primaryColor: AppColors.greenPrimary,
+        primaryColor: AppColors.primary,
       ),
     );
   }

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:konfio_app_dog/config/colors.dart';
 import 'package:konfio_app_dog/features/home/presentation/blocs/bloc/bloc.dart'
     as bloc;
+import 'package:konfio_app_dog/features/home/presentation/widgets/card_dog_widget.dart';
+import 'package:konfio_app_dog/generated/l10n.dart';
 
 export 'package:konfio_app_dog/features/home/presentation/blocs/bloc/bloc.dart';
 
@@ -11,8 +14,19 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: _Body(),
+    return Scaffold(
+      backgroundColor: AppColors.background,
+      appBar: AppBar(
+        title: Text(
+          S.current.dogWeLove,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+        backgroundColor: AppColors.background,
+      ),
+      body: const _Body(),
     );
   }
 }
@@ -38,10 +52,7 @@ class _Body extends StatelessWidget {
                 itemCount: state.model.ltsDogModel.length,
                 itemBuilder: (context, index) {
                   final dog = state.model.ltsDogModel[index];
-                  return ListTile(
-                    title: Text(dog.dogModelName ?? ''),
-                    subtitle: Text(dog.description ?? ''),
-                  );
+                  return CardDogWidget(dog: dog);
                 },
               );
             }

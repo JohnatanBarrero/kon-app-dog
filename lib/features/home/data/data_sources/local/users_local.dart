@@ -1,3 +1,3 @@
-class UsersLocal  {
+class dogLocal  {
   
 }
