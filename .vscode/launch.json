@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "dev",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/config/env_app/env_dev_main.dart"
+        },
+        {
+            "name": "cert",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/config/env_app/env_cert_main.dartt",
+        },
+        {
+            "name": "pro",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+          
+        }
+       
+    ]
+}

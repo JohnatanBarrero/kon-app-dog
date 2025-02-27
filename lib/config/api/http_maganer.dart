@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_flavor/flutter_flavor.dart';
+import 'package:konfio_app_dog/config/flavor.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class HttpManager {
@@ -15,10 +17,11 @@ class HttpManager {
   Dio get genDio => _genDio;
 
   init() {
-    genDio.options.baseUrl = 'https://jsonblob.com/api/';
+    genDio.options.baseUrl =
+        FlavorConfig.instance.variables[FlavorKeys.mainUrl];
     genDio.options.headers = {
       Headers.contentTypeHeader: Headers.jsonContentType,
-      Headers.acceptHeader: Headers.jsonContentType,      
+      Headers.acceptHeader: Headers.jsonContentType,
     };
   }
 }
