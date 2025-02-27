@@ -1,6 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:konfio_app_dog/config/api/api.dart';
 import 'package:konfio_app_dog/config/api/http_maganer.dart';
+import 'package:konfio_app_dog/config/main/index.dart' as main;
 import 'package:konfio_app_dog/features/home/data/data_sources/local/dog_impl_local.dart';
 import 'package:konfio_app_dog/features/home/data/data_sources/remote/dog_impl_api.dart';
 import 'package:konfio_app_dog/features/home/data/repositories/dog_local_impl.dart';
@@ -10,8 +11,6 @@ import 'package:konfio_app_dog/features/home/presentation/pages/home_screen.dart
     as home;
 import 'package:konfio_app_dog/features/home/presentation/pages/splash_screen.dart';
 import 'package:konfio_app_dog/shared/utils/json_loader.dart';
-
-//import 'api/raiser_http_maganer.dart';
 
 class AppModule extends Module {
   @override
@@ -27,10 +26,7 @@ class AppModule extends Module {
     i.addSingleton(
         () => DogUseCase(i.get<DogRespositoryImpl>(), i.get<DogLocalImpl>()));
     i.addSingleton(() => home.Bloc(dogUseCase: Modular.get()));
-
-    // //  i.add(XPTOEmail.new);
-    // // i.add<EmailService>(XPTOEmailService.new);
-    // // i.addSingleton(Client.new);
+    i.addSingleton(() => main.BlocMain());
   }
 
   @override

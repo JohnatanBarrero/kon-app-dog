@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:konfio_app_dog/config/colors.dart';
 import 'package:konfio_app_dog/general_model/dog_model.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -16,7 +15,7 @@ class CardDogWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 0,
-      color: AppColors.background,
+      color: Theme.of(context).primaryColorLight,
       child: Row(
         children: <Widget>[
           ClipRRect(
@@ -49,9 +48,9 @@ class CardDogWidget extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 10),
                     height: 170,
                     width: double.infinity,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).shadowColor,
+                      borderRadius: const BorderRadius.only(
                         topRight: Radius.circular(20),
                         bottomRight: Radius.circular(20),
                       ),
@@ -62,24 +61,29 @@ class CardDogWidget extends StatelessWidget {
                       children: <Widget>[
                         Text(
                           dog.dogName!,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 22,
+                            color: Theme.of(context).primaryColor,
                           ),
                         ),
                         const SizedBox(
                           height: 8,
                         ),
-                        Text(dog.description!,
-                            style: const TextStyle(color: AppColors.secondary)),
+                        Text(
+                          dog.description!,
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
                           'Almost ${dog.age!} years',
-                          style: const TextStyle(
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColor,
                             fontWeight: FontWeight.bold,
                             fontSize: 12,
-                            color: AppColors.secondary,
                           ),
                         ),
                       ],

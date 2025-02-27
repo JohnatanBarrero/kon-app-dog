@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:konfio_app_dog/config/colors.dart';
 import 'package:konfio_app_dog/features/home/presentation/blocs/bloc/bloc.dart'
     as bloc;
+import 'package:konfio_app_dog/features/home/presentation/widgets/btn_mode_widget.dart';
 import 'package:konfio_app_dog/features/home/presentation/widgets/card_dog_widget.dart';
 import 'package:konfio_app_dog/generated/l10n.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -16,16 +16,17 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: Theme.of(context).primaryColorLight,
       appBar: AppBar(
+        actions: const [BtnThemeApp(), SizedBox(width: 10)],
         title: Text(
           S.current.dogWeLove,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).primaryColor),
         ),
         centerTitle: true,
-        backgroundColor: AppColors.background,
+        backgroundColor: Theme.of(context).primaryColorLight,
       ),
       body: const _Body(),
     );
