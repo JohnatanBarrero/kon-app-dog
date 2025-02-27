@@ -1,31 +1,26 @@
-
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:konfio_app_dog/config/api/http_maganer.dart';
 
 class Api {
-  static final client = Modular.get<HttpManager>();
+  final HttpManager client;
 
-  static Future getApi(String path, {dynamic params}) async {
-    final resp = await client.genDio.get(
-      path,
-      queryParameters: params,
-    );
-    return resp;
+  // Permitir inyección de dependencias para pruebas
+  Api({HttpManager? httpManager}) : client = httpManager ?? Modular.get<HttpManager>();
+
+  Future<Response> getApi(String path, {dynamic params}) async {
+    return await client.genDio.get(path, queryParameters: params);
   }
 
-  static Future postApi(String path, dynamic data, [Options? options]) async {
-    final resp = await client.genDio.post(path, data: data, options: options);
-    return resp;
+  Future<Response> postApi(String path, dynamic data, [Options? options]) async {
+    return await client.genDio.post(path, data: data, options: options);
   }
 
-  static Future delApi(String path, dynamic data, [Options? options]) async {
-    final resp = await client.genDio.delete(path, data: data, options: options);
-    return resp;
+  Future<Response> delApi(String path, dynamic data, [Options? options]) async {
+    return await client.genDio.delete(path, data: data, options: options);
   }
 
-  static Future putApi(String path, dynamic data) async {
-    final resp = await client.genDio.put(path, data: data);
-    return resp;
+  Future<Response> putApi(String path, dynamic data) async {
+    return await client.genDio.put(path, data: data);
   }
 }

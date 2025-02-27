@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:konfio_app_dog/config/api/api.dart';
 import 'package:konfio_app_dog/config/api/http_maganer.dart';
 import 'package:konfio_app_dog/features/home/data/data_sources/local/dog_impl_local.dart';
 import 'package:konfio_app_dog/features/home/data/data_sources/remote/dog_impl_api.dart';
@@ -8,6 +9,7 @@ import 'package:konfio_app_dog/features/home/domain/usecases/dog_usecase.dart';
 import 'package:konfio_app_dog/features/home/presentation/pages/home_screen.dart'
     as home;
 import 'package:konfio_app_dog/features/home/presentation/pages/splash_screen.dart';
+import 'package:konfio_app_dog/shared/utils/json_loader.dart';
 
 //import 'api/raiser_http_maganer.dart';
 
@@ -15,7 +17,10 @@ class AppModule extends Module {
   @override
   void binds(i) {
     i.addSingleton<HttpManager>(HttpManager.new);
-    i.addSingleton(() => DogImplApi());
+    i.addSingleton(() => DogImplApi(
+          api: Api(),
+          jsonLoader: JsonLoader('assets/data/dogdata.json'),
+        ));
     i.addSingleton(() => DogImplLocal());
     i.addSingleton(() => DogRespositoryImpl(i.get<DogImplApi>()));
     i.addSingleton(() => DogLocalImpl(i.get<DogImplLocal>()));
